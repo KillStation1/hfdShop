@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рулетка Розыгрыша - HFDstore</title>
+    <link rel="stylesheet" href="styles6.css">
+    <style>
+        /* Стили для модального окна рулетки */
+        .roulette-modal {
+            display: block;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .roulette-content {
+            position: relative;
+            padding: 20px;
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            color: black;
+        }
+
+        .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">HFD Store</a>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="GameStore Logo" class="logo-image">
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="roulette-modal">
+            <div class="roulette-content">
+                <span class="close" onclick="closeRoulette()">&times;</span>
+                <p id="resultText">Поздравляем! Ваш приз:</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function startRoulette() {
+            const prizes = [
+                "10% скидка на следующую покупку",
+                "500 бонусных баллов",
+                "Бесплатная доставка",
+                "Игра в подарок",
+                "Купон на скидку 300 рублей",
+                "Специальная подписка на месяц",
+                "Скидка на 5%"
+            ];
+
+            // Случайный выбор приза
+            const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+
+            // Отобразить результат
+            document.getElementById("resultText").textContent = "Поздравляем! Ваш приз: " + randomPrize;
+        }
+
+        function closeRoulette() {
+            document.querySelector(".roulette-modal").style.display = "none";
+        }
+
+        // Запуск рулетки при загрузке страницы
+        window.onload = startRoulette;
+    </script>
+</body>
+</html>
